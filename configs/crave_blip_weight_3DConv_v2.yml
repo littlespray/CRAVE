@@ -1,0 +1,60 @@
+name: crave_blip_3DConv_v2-less
+num_epochs: 0
+l_num_epochs: 15
+warmup_epochs: 2.5
+ema: true
+save_model: true
+batch_size: 8
+accum_grad_iters: 1
+num_workers: 6
+split_seed: 10
+
+wandb:
+    project_name: crave_blip_3DConv_v2-less
+
+data:
+    videoQA:
+        type: ViewDecompositionDataset
+        args:
+            weight: 0.443
+            phase: train
+            anno_file:  /code/vqa/dover/crave-db/new_prompt.txt
+            data_prefix: /code/vqa/dover/crave-db/
+            sample_types:
+                time:
+                    size_h: 224
+                    size_w: 224
+                    clip_len: 16
+                    frame_interval: 1
+                    t_frag: 16
+                    num_clips: 1
+
+model:
+    type: DOVER_dift
+    args:
+        backbone:
+            #uniformerv2_l14_336
+            #l16_ptk710_ftk710_f8_res224
+            #l16_ptk710_ftk710_ftk400_ftmitv1_f8_res224
+            #l16_ptk710_ftk710_ftssv2_f8_res224
+            #uniformerv2_l14_16frame
+            time:
+                #in_channels: 768
+                type: blip
+                pretrained: true
+                checkpoint: true
+                blip_type: multimodal_text
+
+        backbone_preserve_keys: time
+        divide_head: true
+        vqa_head:
+            hidden_channels: 64
+            attn_pool3d: true # 代码里默认为false
+            text_pool3d: False
+
+optimizer:
+    lr: !!float 6.25e-4
+    backbone_lr_mult: !!float 1e-2
+    wd: 0.05
+
+test_load_path: ./pretrained_weights/crave_blip_3DConv_v2-less_head_videoQA_0_eval_n_finetuned.pth
