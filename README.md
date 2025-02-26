@@ -21,7 +21,7 @@ pip install -r requirements.txt
 ### Pretrained Models
 Download pre-trained models [here](https://drive.google.com/drive/folders/1DTHEW3pGS_6mLO1PvnXz4k0_sf3r9Oww?usp=sharing) and put them into ``ckpts``.
 
-Download model weights [here](https://pan.baidu.com/s/17CwJoQWXnsZDJ1Iu-ZlWsw?pwd=8mcd) and then put them into ``pretrained_weights``.
+Download model weights from [google drive](https://drive.google.com/drive/folders/1Ks0nR56HIT5einjv22BMYgbkOXtnJUDz?usp=sharing) / [baidu yun](https://pan.baidu.com/s/1X8sTTriwyzgMBqAjb8r2NQ?pwd=v5rv) and then put them into ``pretrained_weights``.
 
 ## Usage
 To run the demo in the code, please additionally install [VideoGenEval](https://github.com/AILab-CVC/VideoGen-Eval) and prepare related data.
