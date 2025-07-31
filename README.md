@@ -29,6 +29,9 @@ To run the demo in the code, please additionally install [VideoGenEval](https://
 python infer.py
 ```
 
+## Dataset
+Please refer to [Huggingface](https://huggingface.co/datasets/sunshk/CRAVE-DB).
+
 ## Acknowledgement
 This repo is built on [BLIP](https://github.com/salesforce/BLIP) and [DOVER](https://github.com/VQAssessment/DOVER). We thank the authors for their nice work.
 
